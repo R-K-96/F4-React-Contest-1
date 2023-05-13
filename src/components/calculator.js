@@ -6,47 +6,86 @@ const Calculator = ()=>{
     const [num2,setNum2] = useState();
     const [result,setResult] = useState();
     const [err,setErr] = useState("");
+    
 
    function addition(){
-    Validation()
-    setResult(parseInt(num1)+parseInt(num2))
+    if(Validation())
+    {
+        setResult(parseInt(num1)+parseInt(num2))
     
+    }
    }
 
    function subtraction(){
-    Validation()
-    setResult(parseInt(num1)-parseInt(num2))
+    if(Validation())
+    {
+        setResult(parseInt(num1)-parseInt(num2))
+    
+    }
     
    }
 
    function multiplication(){
-    Validation()
-    setResult(parseInt(num1)*parseInt(num2))
+    if(Validation())
+    {
+        setResult(parseInt(num1)*parseInt(num2))
+    
+    }
     
    }
 
    function division(){
-    Validation()
-    setResult(parseInt(num1)/parseInt(num2))
+    if(Validation())
+    {
+        if(parseInt(num2)===0)
+        {
+            setErr("cannot divide by zero")
+        }
+        else{
+            setResult(parseInt(num1)/parseInt(num2))
+        }
+        
+    
+    }
     
    }
     function Validation() {
         if(!num1)
         {
             setErr("Num1 cannot be empty")
-            return
+            setResult("");
+            return false
         }
         else if(!num2)
         {
             setErr("Num2 cannot be empty")
-            return
+            setResult("");
+            return false
         }
-        else if(!parseInt(num1)|| !parseInt(num2))
+        else if(isNaN(parseFloat(num1))||isNaN(parseFloat(num2))|| !isFinite(num1) || !isFinite(num2))
         {
             setErr("Enter integer value")
-            return
+            setResult("");
+            return false
         }
         setErr("")
+        return true
+    }
+
+
+    function handleDivision(){
+        if(parseInt(num2)===0)
+        {
+            setErr("cannot divide by zero")
+            setResult("");
+        }
+        else{
+            if(Validation())
+            {
+                setResult(parseInt(num1)/parseInt(num2))
+            }
+            
+        }
     }
 
 
@@ -59,7 +98,7 @@ const Calculator = ()=>{
                 <button className="btn" id="addition" onClick={addition}>+</button>
                 <button className="btn" id="subtraction" onClick={subtraction}>-</button>
                 <button className="btn" id="multiplication" onClick={multiplication}>*</button>
-                <button className="btn" id="division" onClick={division}>/</button>
+                <button className="btn" id="division" onClick={handleDivision}>/</button>
             </div>
             {err?<p style={{color:"red"}}>Error : {err}</p>:""}
 
