@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/F4-React-Contest-1/static/css/main.c702cafe.css",
+    "main.js": "/F4-React-Contest-1/static/js/main.90a9ca28.js",
+    "index.html": "/F4-React-Contest-1/index.html",
+    "main.c702cafe.css.map": "/F4-React-Contest-1/static/css/main.c702cafe.css.map",
+    "main.90a9ca28.js.map": "/F4-React-Contest-1/static/js/main.90a9ca28.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c702cafe.css",
+    "static/js/main.90a9ca28.js"
+  ]
+}
